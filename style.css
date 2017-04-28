@@ -1,0 +1,35 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Helvetica';
+}
+#wrapper {
+	width: 1200px;
+	height: 2000px;
+	background-color: white;
+	margin: 0 auto;
+}
+#sidebar{
+	position: fixed;
+	width: 255px;
+	height: 317px;
+	border: 20px solid red;
+	padding: 10px;
+	background-color: white;
+	display: inline-block;
+	vertical-align: top;
+}
+#content-left{
+	width: 900px;
+	height: auto;
+	display: inline-block;
+	vertical-align: top;
+	background-color: white;
+}
+ul{
+	margin-left: 15px;
+}
+h4 {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}

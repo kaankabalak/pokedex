@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Pokedex</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+	<script type="text/javascript">
+		$('document').ready(function() {
+			for( var i=1; i<=151; i++) {
+				$('#content-left').append('<img id="' + i + '"src="http://pokeapi.co/media/img/' + i + '.png">');
+			}
+			$('img').click(function() {
+				var poke_id = $(this).attr('id');
+				$.get("http://pokeapi.co/api/v1/pokemon/" + $(this).attr('id') + "/", function(res) {
+			    	var html_str = "<h1>";
+			        html_str += res.name;
+			        html_str += "</h1>"
+			        html_str += "<img src='http://pokeapi.co/media/img/" + poke_id + ".png'>"
+			        html_str += "<h4>Types</h4>";
+                    html_str += "<ul>"; 
+                    for(var i = 0; i < res.types.length; i++) {
+                        html_str += "<li>" + res.types[i].name + "</li>";
+                    }
+                    html_str += "</ul>";
+                    html_str += "<h4>Height</h4>";
+                    html_str += res.height;
+                    html_str += "<h4>Weight</h4>";
+                    html_str += res.weight;
+			        $('#sidebar').html(html_str);
+				}, "json");
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="content-left"></div>
+		<div id="sidebar"></div>
+	</div>
+</body>
+</html>
